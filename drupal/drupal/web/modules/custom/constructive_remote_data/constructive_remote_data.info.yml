@@ -1,0 +1,7 @@
+name: Constructive Remote Data
+description: 'Provides remote data integration.'
+type: module
+package: 'Constructive'
+core_version_requirement: ^10
+dependencies:
+  - views_remote_data:views_remote_data

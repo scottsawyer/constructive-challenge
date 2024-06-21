@@ -1,0 +1,14 @@
+name: 'Views Remote Data: PokeAPI'
+type: module
+description: 'Example module using Views Remote Data and the PokeAPI'
+package: Testing
+dependencies:
+  - drupal:node
+  - drupal:file
+  - drupal:image
+  - views_remote_data:views_remote_data
+
+# Information added by Drupal.org packaging script on 2022-12-13
+version: '1.0.2'
+project: 'views_remote_data'
+datestamp: 1670966479

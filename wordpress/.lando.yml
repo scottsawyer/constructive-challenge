@@ -1,7 +1,0 @@
-name: bedrock
-recipe: lemp
-config:
-  webroot: web
-services:
-  appserver:
-    type: 'php:8.2'

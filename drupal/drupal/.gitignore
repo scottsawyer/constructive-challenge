@@ -1,0 +1,5 @@
+# Local lando
+.lando.local.yml
+
+#vim
+*.swp

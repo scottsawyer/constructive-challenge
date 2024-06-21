@@ -1,0 +1,9 @@
+services:
+  constructive_remote_data.constructive_api:
+    class: Drupal\constructive_remote_data\ConstructiveApi
+    arguments: ['@http_client', '@cache.data']
+  constructive_remote_data.event_subscriber:
+    class: Drupal\constructive_remote_data\EventSubscriber\ViewsRemoteDataSubscriber
+    arguments: ['@constructive_remote_data.constructive_api']
+    tags:
+      - { name: event_subscriber }
