@@ -1,7 +1,0 @@
-# Local Lando #
-###############
-.lando.local.yml
-
-# Vim #
-#######
-*.swp
