@@ -14,7 +14,9 @@ lando db import ./wordpress_database.sql
 Visit (https://bedrock.lndo.site).
 
 *User name:* admin
+
 *Password:* f%StRLojvPZpjx*CjJ
+
 
 ### Turn on Drupal
 
@@ -26,7 +28,9 @@ lando db-import ./drupal_database.sql
 Visit (https://cdrupal.lndo.site).
 
 *User name:* admin
+
 *Password:* UKYTEvL59w@7j*@E
+
 
 Everything should just work!
 
