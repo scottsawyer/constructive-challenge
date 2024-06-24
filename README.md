@@ -40,7 +40,7 @@ This module is a bit more sophisticated.  The service \Drupal\constructive_remot
 
 I used (Views Remote Data)[https://www.drupal.org/project/views_remote_data] to exposed the API data to Views.  The module is co-maintained by mglaman, who is well-known and respected in the Drupal community, particularly for his work on Drupal Commerce, so I have a high degree of confidence in this module. It provides a views plugin and emits an event that, when subscribed to (after altering the views base table), allows injecting the data from our API request.  While reading the documentation, I found a test module that demonstrated a way to use a node completely in memory, so there are no database saves, pretty slick.  The documentation was quite good and it was kind of fun to set up. 
 
-I created the View (exported to /config/install in the module directory) and added a template override so I could add the <hr> after each row (the default template already wraps each row in a <div>).  However, since I left the default theme Olivera, which has an interesting styling choice, the <hr> is not very visible, but you can see it if you inspect the rendered markup.   
+I created the View and added the template override so I could add the <hr> after each row (the default template already wraps each row in a <div>).  However, since I left the default theme Olivera, which has an interesting styling choice, the <hr> is not very visible, but you can see it if you inspect the rendered markup.   
 
 I exported the content type (remote_post), fields, and view to the config/install directory, so if we wanted to use this module on another site, we should be able to just install it and everything would work.
 
@@ -48,6 +48,6 @@ While the solution of generating nodes in memory is interesting, I think we'd ne
 
 A simpler solution with less dependencies might have been to just create a controller to display the list of API results.  This might be more performant, we no longer need to generate nodes in memory, and avoid altering views.  There would be drawbacks, such as, with the views approach we get a lot more control in the UI (display modes, changing the format of the views results, and if we had images, we should be able to use image styles).
 
-This might be done with just core / JSON:API by having the WordPress side send a request when a post is changed.  We'd have to actually store the post data in the Drupal database, set up authentication, etc.  I like our solution better, less work, probably better architecture to only storing data in one place.
+This might be done with just core / JSON:API by having the WordPress side send a request when a post is changed.  We'd have to actually store the post data in the Drupal database, set up authentication, etc.  I like our solution better, less work, probably better architecture to only store data in one place.
 
 Another option might be to aggregate a feed from the WordPress site, using a module like [Feeds](https://www.drupal.org/project/feeds).
