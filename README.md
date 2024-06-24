@@ -9,7 +9,9 @@ Both WordPress and Drupal installs run on [Lando](https://lando.dev/).  A comple
 ```
 cd /wordpress/bedrock
 lando start
-lando db import ./wordpress_database.sql
+lando composer install
+lando db-import ./wordpress_database.sql
+mv ../.env ./
 ```
 Visit (https://bedrock.lndo.site).
 
@@ -33,8 +35,6 @@ Visit (https://cdrupal.lndo.site).
 
 
 Everything should just work!
-
-*NOTE* I haven't tried a fresh install from the repo :)
 
 ## WordPress plugin.
 
