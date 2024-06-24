@@ -1,0 +1,24 @@
+uuid: 3ad5eda8-0070-47d4-9a34-6809393abeec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body
+    - filter.format.full_html
+    - node.type.remote_post
+  module:
+    - text
+id: node.remote_post.field_body
+field_name: field_body
+entity_type: node
+bundle: remote_post
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+field_type: text_long

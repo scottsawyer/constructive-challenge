@@ -1,0 +1,18 @@
+uuid: 353e8db1-8fb5-479e-9b59-c3934600f8b4
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Remote post'
+type: remote_post
+description: 'Displays remote posts from a WordPress install.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

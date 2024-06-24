@@ -1,0 +1,25 @@
+uuid: 104d5613-30d6-46b0-8b80-e323721dd363
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.remote_post.field_body
+    - node.type.remote_post
+  module:
+    - text
+    - user
+id: node.remote_post.teaser
+targetEntityType: node
+bundle: remote_post
+mode: teaser
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  links: true

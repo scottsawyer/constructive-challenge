@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\constructive_remote_data\EventSubscriber;
 
+use Drupal\Component\Utility\Html;
 use Drupal\node\Entity\Node;
 use Drupal\views\ResultRow;
 use Drupal\views_remote_data\Events\RemoteDataLoadEntitiesEvent;
@@ -53,27 +54,32 @@ final class ViewsRemoteDataSubscriber implements EventSubscriberInterface {
    *   Method does not return.
    */
   public function onLoadEntities(RemoteDataLoadEntitiesEvent $event): void {
+
     $supported_bases = [
       'constructive_remote_data',
     ];
+
     $base_tables = array_keys($event->getView()->getBaseTables());
     if (count(array_intersect($supported_bases, $base_tables)) > 0) {
+
       $posts = $this->constructiveApi->getPosts();
       foreach ($event->getResults() as $index => $result) {
-        /*
-        assert(property_exists($result, 'id'));
+
         assert(property_exists($result, 'title'));
-        assert(property_exists($result, 'published'));
         assert(property_exists($result, 'body'));
 
-        $post = array_filter($posts, )
-        /**/
-        $result->_entity = Node::create([
-          'title' => $posts[0]['title'],
-          'body' => $posts[0]['body'],
-          'field_published' => $posts[0]['published'],
-          'type' => 'remote_post',
-        ]);
+        if (isset($posts[$index])) {
+          $result->_entity = Node::create([
+            'title' => $posts[$index]['title'] ?? '',
+            'field_body' => [
+              // We should run this through some filters for security.
+              'value' => Html::decodeEntities($posts[$index]['body']),
+              'format' => 'full_html',
+            ],
+            'type' => 'remote_post',
+            'status'   => 1,
+          ]);
+        }
 
       }
     }
@@ -95,7 +101,7 @@ final class ViewsRemoteDataSubscriber implements EventSubscriberInterface {
     $base_tables = array_keys($event->getView()->getBaseTables());
     if (count(array_intersect($supported_bases, $base_tables)) > 0) {
       $posts = $this->constructiveApi->getPosts();
-      foreach ($posts['results'] as $post) {
+      foreach ($posts as $post) {
         $event->addResult(new ResultRow($post));
       }
     }

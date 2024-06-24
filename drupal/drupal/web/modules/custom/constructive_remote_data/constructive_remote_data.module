@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Contains functions for Constructive Remote Data.
+ */
+
+use Drupal\Core\Cache\Cache;
+
+/**
+ * Implements hook_theme().
+ */
+function constructive_remote_data_theme($existing, $type, $theme, $path) {
+
+  // Set the views template to the template in this module.
+  return [
+    'views_view_unformatted__remote_posts' => [
+      'template' => 'views-view-unformatted--remote-posts',
+      'base hook' => 'views',
+    ],
+  ];
+
+}
+
+/**
+ * Implements hook_cron().
+ */
+function constructive_remote_data_cron() {
+  $interval = 900;
+
+  $next_execution = \Drupal::state()->get('constructive_remote_data.next_execution');
+  $next_execution = !empty($next_execution) ? (int) $next_execution : 0;
+
+  $request_time = \Drupal::time()->getRequestTime();
+
+  // If the request time is greater than or equal to the next execution time,
+  // invalidate the cache tag for the api, then reschedule the next time.
+  if ($request_time >= $next_execution) {
+    Cache::invalidateTags(['constructive:api']);
+    \Drupal::state()->set('constructive_remote_data.next_execution', $request_time + $interval);
+  }
+
+}
