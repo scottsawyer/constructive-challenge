@@ -904,6 +904,3 @@ $databases['default']['default'] = array (
 );
 $settings['config_sync_directory'] = '../config/sync';
 
-// Override cron settings.
-$config['automated_cron.settings']['interval'] = 900;
-
