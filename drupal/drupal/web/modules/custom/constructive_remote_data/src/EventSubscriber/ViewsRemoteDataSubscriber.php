@@ -69,15 +69,17 @@ final class ViewsRemoteDataSubscriber implements EventSubscriberInterface {
         assert(property_exists($result, 'body'));
 
         if (isset($posts[$index])) {
+          // Check if there is a body, or we might get errors.
+          $body = $posts[$index]['body'] ?? '';
           $result->_entity = Node::create([
             'title' => $posts[$index]['title'] ?? '',
             'field_body' => [
               // We should run this through some filters for security.
-              'value' => Html::decodeEntities($posts[$index]['body']),
+              'value' => Html::decodeEntities($body),
               'format' => 'full_html',
             ],
             'type' => 'remote_post',
-            'status'   => 1,
+            'status' => 1,
           ]);
         }
 
