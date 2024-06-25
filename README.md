@@ -11,7 +11,6 @@ cd /wordpress/bedrock
 lando start
 lando composer install
 lando db-import ./wordpress_database.sql
-mv ../.env ./
 ```
 Visit (https://bedrock.lndo.site).
 
