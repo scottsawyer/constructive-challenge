@@ -18,6 +18,7 @@ Visit (https://bedrock.lndo.site).
 
 *Password:* f%StRLojvPZpjx*CjJ
 
+I did find I needed to resave permalinks.
 
 ### Turn on Drupal
 

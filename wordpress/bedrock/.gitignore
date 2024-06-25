@@ -32,3 +32,6 @@ wp-cli.local.yml
 
 # Vim
 *.swp
+
+# PHPStorm
+.idea
