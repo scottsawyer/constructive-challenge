@@ -904,3 +904,5 @@ $databases['default']['default'] = array (
 );
 $settings['config_sync_directory'] = '../config/sync';
 
+ // Skip permissions hardening.
+$settings['skip_permissions_hardening'] = TRUE;
