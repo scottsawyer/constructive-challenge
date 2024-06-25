@@ -6,11 +6,14 @@ Both WordPress and Drupal installs run on [Lando](https://lando.dev/).  A comple
 
 ### Turn on WordPress
 
+From the repository root:
+
 ```
-cd /wordpress/bedrock
+cd ./wordpress/bedrock
 lando start
 lando composer install
 lando db-import ./wordpress_database.sql
+lando wp rewrite flush
 ```
 Visit (https://bedrock.lndo.site).
 
@@ -18,14 +21,16 @@ Visit (https://bedrock.lndo.site).
 
 *Password:* f%StRLojvPZpjx*CjJ
 
-I did find I needed to resave permalinks.
 
 ### Turn on Drupal
 
+From the repository root:
+
 ```
-cd /drupal/drupal
+cd ./drupal/drupal
 lando start
 lando db-import ./drupal_database.sql
+lando drush cr
 ```
 Visit (https://cdrupal.lndo.site).
 
